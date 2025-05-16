@@ -7,6 +7,10 @@
         src="@/assets/logo.png"
       />
 
+      <v-number-input v-model="inputA" />
+      <v-number-input v-model="inputB" />
+      <pre>My sum: {{ result }}</pre>
+
       <div class="mb-8 text-center">
         <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
         <h1 class="text-h2 font-weight-bold">Vuetify</h1>
@@ -61,6 +65,12 @@
 </template>
 
 <script setup>
+  import { sum } from '@/helpers/sum.js';
+
+  const inputA = ref(0)
+  const inputB = ref(0)
+  const result = computed(() => sum(inputA.value, inputB.value))
+
   const links = [
     {
       href: 'https://vuetifyjs.com/',
