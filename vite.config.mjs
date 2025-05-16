@@ -9,6 +9,7 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // Utilities
+import { configDefaults } from 'vitest/config'
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
@@ -86,5 +87,11 @@ export default defineConfig({
         api: 'modern-compiler',
       },
     },
+  },
+  test: {
+    exclude: [
+      ...configDefaults.exclude,
+      'e2e/**'
+    ],
   },
 })
